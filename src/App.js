@@ -120,6 +120,7 @@ class App extends Component {
             />
             <h2>Work Experience</h2>
             <Experience
+              props={this.state.experience}
               company={this.state.experience[0].company}
               position={this.state.experience[0].position}
               start={this.state.experience[0].start}
