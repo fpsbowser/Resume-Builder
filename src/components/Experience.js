@@ -2,35 +2,25 @@ import React, { Component } from 'react';
 import uniqid from 'uniqid';
 
 class Experience extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      experience: [props.props[0], props.props[1], props.props[2]],
-    };
-    this.addInputs = this.addInputs.bind(this);
+  removeExperience(experience) {
+    this.props.handledelete(experience, 'experience');
   }
 
-  addInputs() {
-    this.setState((prevState) => ({
-      experience: [
-        ...prevState.experience,
-        {
-          company: '',
-          position: '',
-          start: '',
-          end: '',
-          description: '',
-        },
-      ],
-    }));
+  addExperience() {
+    this.props.add('experience');
   }
 
   render() {
-    // const { company, position, start, end, description } = this.props;
     return (
       <div>
-        <button onClick={this.addInputs}>Add</button>
-        {this.state.experience.map((el) => {
+        <button
+          onClick={() => {
+            this.addExperience();
+          }}
+        >
+          Add
+        </button>
+        {this.props.experiences.map((el) => {
           return (
             <div key={uniqid()}>
               <input
@@ -63,10 +53,16 @@ class Experience extends Component {
                 placeholder={'Description'}
                 onChange={this.props.handlechange}
               />
+              <button
+                onClick={() => {
+                  this.removeExperience(el);
+                }}
+              >
+                Delete
+              </button>
             </div>
           );
         })}
-        <button onClick={this.props.handledelete}>Delete</button>
       </div>
     );
   }

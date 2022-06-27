@@ -1,53 +1,62 @@
 import React, { Component } from 'react';
+import uniqid from 'uniqid';
 
 class Education extends Component {
-  //   constructor(props) {
-  //     super(props);
-  //     this.state = {
-  //       course: this.props.course,
-  //       university: this.props.university,
-  //       start: this.props.start,
-  //       end: this.props.end,
-  //       description: this.props.description,
-  //     };
-  //   }
+  removeEducation(education) {
+    this.props.handledelete(education, 'education');
+  }
+
+  addEducation() {
+    this.props.add('education');
+  }
 
   render() {
-    const { course, university, start, end } = this.props;
-
     return (
       <div>
-        <form>
-          <input
-            type="text"
-            placeholder="Course / Program"
-            value={course}
-            name="course"
-            onChange={this.props.handlechange}
-          />
-          <input
-            type="text"
-            placeholder="University"
-            value={university}
-            name="university"
-            onChange={this.props.handlechange}
-          />
-          <input
-            type="text"
-            placeholder="Start Date"
-            value={start}
-            name="start"
-            onChange={this.props.handlechange}
-          />
-          <input
-            type="text"
-            placeholder="End Date"
-            value={end}
-            name="end"
-            onChange={this.props.handlechange}
-          />
-          <button>Delete</button>
-        </form>
+        <button
+          onClick={() => {
+            this.addEducation();
+          }}
+        >
+          Add
+        </button>
+        {this.props.educations.map((el) => {
+          return (
+            <div key={uniqid()}>
+              <input
+                value={el.course}
+                name={'course'}
+                placeholder={'Course'}
+                onChange={this.props.handlechange}
+              />
+              <input
+                value={el.university}
+                name={'university'}
+                placeholder={'University'}
+                onChange={this.props.handlechange}
+              />
+              <input
+                value={el.start}
+                name={'start'}
+                placeholder={'Start'}
+                onChange={this.props.handlechange}
+              />
+              <input
+                value={el.end}
+                name={'end'}
+                placeholder={'End'}
+                onChange={this.props.handlechange}
+              />
+              <button
+                onClick={() => {
+                  this.removeEducation(el);
+                }}
+              >
+                Delete
+              </button>
+            </div>
+          );
+        })}
       </div>
     );
   }

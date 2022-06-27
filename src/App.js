@@ -43,30 +43,70 @@ class App extends Component {
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate nam rem eos placeat doloribus deleniti sit!',
         },
       ],
-      education: {
-        course: 'Fullstack JavaScript',
-        university: 'The Odin Project',
-        start: '2020',
-        end: '2021',
-        description: '',
-      },
-      educationTwo: {
-        course: 'CS50: Introduction to Computer Science',
-        university: 'Harvard University',
-        start: '2019',
-        end: '2020',
-        description: '',
-      },
+      education: [
+        {
+          course: 'Fullstack JavaScript',
+          university: 'The Odin Project',
+          start: '2020',
+          end: '2021',
+          description: '',
+        },
+        {
+          course: 'CS50: Introduction to Computer Science',
+          university: 'Harvard University',
+          start: '2019',
+          end: '2020',
+          description: '',
+        },
+      ],
     };
     this.informationHandlechange = this.informationHandlechange.bind(this);
     this.experienceHandlechange = this.experienceHandlechange.bind(this);
     this.educationHandlechange = this.educationHandlechange.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
+    this.addInputs = this.addInputs.bind(this);
   }
 
-  handleDeleteClick(e) {
-    e.preventDefault();
-    console.log(e.target.parentElement);
+  handleDeleteClick(div, type) {
+    if (type === 'experience') {
+      this.setState({
+        experience: this.state.experience.filter((el) => el !== div),
+      });
+    } else if (type === 'education') {
+      this.setState({
+        education: this.state.education.filter((el) => el !== div),
+      });
+    }
+  }
+
+  addInputs(type) {
+    if (type === 'experience') {
+      console.log(this.state.experience);
+      this.setState((prevState) => ({
+        experience: [
+          ...prevState.experience,
+          {
+            company: '',
+            position: '',
+            start: '',
+            end: '',
+            description: '',
+          },
+        ],
+      }));
+    } else if (type === 'education') {
+      this.setState((prevState) => ({
+        education: [
+          ...prevState.education,
+          {
+            course: '',
+            university: '',
+            start: '',
+            end: '',
+          },
+        ],
+      }));
+    }
   }
 
   informationHandlechange(e) {
@@ -120,48 +160,18 @@ class App extends Component {
             />
             <h2>Work Experience</h2>
             <Experience
-              props={this.state.experience}
-              company={this.state.experience[0].company}
-              position={this.state.experience[0].position}
-              start={this.state.experience[0].start}
-              end={this.state.experience[0].end}
-              description={this.state.experience[0].description}
+              experiences={this.state.experience}
               handlechange={this.experienceHandlechange}
               handledelete={this.handleDeleteClick}
+              add={this.addInputs}
             />
-            {/*  <Experience
-            company={this.state.experienceTwo.company}
-            position={this.state.experienceTwo.position}
-            start={this.state.experienceTwo.start}
-            end={this.state.experienceTwo.end}
-            description={this.state.experienceTwo.description}
-            handlechange={this.experienceHandlechange}
-          />
-          <Experience
-            company={this.state.experienceThree.company}
-            position={this.state.experienceThree.position}
-            start={this.state.experienceThree.start}
-            end={this.state.experienceThree.end}
-            description={this.state.experienceThree.description}
-            handlechange={this.experienceHandlechange}
-          /> */}
             <h2>Education</h2>
             <Education
-              course={this.state.education.course}
-              university={this.state.education.university}
-              start={this.state.education.start}
-              end={this.state.education.end}
-              description={this.state.education.description}
+              educations={this.state.education}
               handlechange={this.educationHandlechange}
+              handledelete={this.handleDeleteClick}
+              add={this.addInputs}
             />
-            {/* <Education
-            course={this.state.educationTwo.course}
-            university={this.state.educationTwo.university}
-            start={this.state.educationTwo.start}
-            end={this.state.educationTwo.end}
-            description={this.state.educationTwo.description}
-            handlechange={this.educationHandlechange}
-          /> */}
           </div>
           <div className="rendered-container">
             <CV
