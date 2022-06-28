@@ -189,26 +189,7 @@ class App extends Component {
             />
           </div>
           <div className="rendered-container">
-            <CV
-              name={this.state.information.name}
-              title={this.state.information.title}
-              phone={this.state.information.phone}
-              email={this.state.information.email}
-              location={this.state.information.location}
-              description={this.state.information.description}
-              company={this.state.experience.company}
-              position={this.state.experience.position}
-              start={this.state.experience.start}
-              end={this.state.experience.end}
-              experienceDescription={this.state.experience.description}
-              handlechange={this.experienceHandlechange}
-              course={this.state.education.course}
-              university={this.state.education.university}
-              eduStart={this.state.education.start}
-              eduEnd={this.state.education.end}
-              eduDescription={this.state.education.description}
-              eduHandlechange={this.educationHandlechange}
-            />
+            <CV props={this.state} />
           </div>
         </div>
       </div>
