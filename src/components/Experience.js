@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import uniqid from 'uniqid';
 
 class Experience extends Component {
   removeExperience(experience) {
@@ -8,6 +7,10 @@ class Experience extends Component {
 
   addExperience() {
     this.props.add('experience');
+  }
+
+  handlechange(e, index) {
+    this.props.handlechange(e, 'experience', index);
   }
 
   render() {
@@ -22,36 +25,46 @@ class Experience extends Component {
         </button>
         {this.props.experiences.map((el) => {
           return (
-            <div key={uniqid()}>
+            <div key={el.id}>
               <input
                 value={el.company}
                 name={'company'}
                 placeholder={'Company'}
-                onChange={this.props.handlechange}
+                onChange={(e) => {
+                  this.handlechange(e, el.company);
+                }}
               />
               <input
                 value={el.position}
                 name={'position'}
                 placeholder={'Position'}
-                onChange={this.props.handlechange}
+                onChange={(e) => {
+                  this.handlechange(e, el.company);
+                }}
               />
               <input
                 value={el.start}
                 name={'start'}
                 placeholder={'Start'}
-                onChange={this.props.handlechange}
+                onChange={(e) => {
+                  this.handlechange(e, el.company);
+                }}
               />
               <input
                 value={el.end}
                 name={'end'}
                 placeholder={'End'}
-                onChange={this.props.handlechange}
+                onChange={(e) => {
+                  this.handlechange(e, el.company);
+                }}
               />
               <input
                 value={el.description}
                 name={'description'}
                 placeholder={'Description'}
-                onChange={this.props.handlechange}
+                onChange={(e) => {
+                  this.handlechange(e, el.company);
+                }}
               />
               <button
                 onClick={() => {

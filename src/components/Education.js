@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import uniqid from 'uniqid';
 
 class Education extends Component {
   removeEducation(education) {
@@ -8,6 +7,10 @@ class Education extends Component {
 
   addEducation() {
     this.props.add('education');
+  }
+
+  handlechange(e, index) {
+    this.props.handlechange(e, 'education', index);
   }
 
   render() {
@@ -22,30 +25,38 @@ class Education extends Component {
         </button>
         {this.props.educations.map((el) => {
           return (
-            <div key={uniqid()}>
+            <div key={el.id}>
               <input
                 value={el.course}
                 name={'course'}
                 placeholder={'Course'}
-                onChange={this.props.handlechange}
+                onChange={(e) => {
+                  this.handlechange(e, el.course);
+                }}
               />
               <input
                 value={el.university}
                 name={'university'}
                 placeholder={'University'}
-                onChange={this.props.handlechange}
+                onChange={(e) => {
+                  this.handlechange(e, el.course);
+                }}
               />
               <input
                 value={el.start}
                 name={'start'}
                 placeholder={'Start'}
-                onChange={this.props.handlechange}
+                onChange={(e) => {
+                  this.handlechange(e, el.course);
+                }}
               />
               <input
                 value={el.end}
                 name={'end'}
                 placeholder={'End'}
-                onChange={this.props.handlechange}
+                onChange={(e) => {
+                  this.handlechange(e, el.course);
+                }}
               />
               <button
                 onClick={() => {
