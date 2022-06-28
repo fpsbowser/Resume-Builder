@@ -3,35 +3,69 @@ import React, { Component } from 'react';
 
 class CV extends Component {
   render() {
+    console.log(this.props);
+    const information = this.props.props.information;
+    const experiences = this.props.props.experience;
+    const education = this.props.props.education;
+    console.log(experiences);
     return (
       <div>
         <div className="header-container">
           <div className="header">
-            <h1 id="name">{this.props.name}</h1>
-            <h2 id="title">{this.props.title}</h2>
+            <h1 id="name">{information.name}</h1>
+            <h2 id="title">{information.title}</h2>
           </div>
           <div className="contact-information">
-            <p id="phone">{this.props.phone}</p>
-            <p id="email">{this.props.email}</p>
-            <p id="location">{this.props.location}</p>
+            <p id="phone">{information.phone}</p>
+            <p id="email">{information.email}</p>
+            <p id="location">{information.location}</p>
           </div>
-          <div id="user-description">{this.props.description}</div>
+          <div id="user-description">{information.description}</div>
         </div>
         <div className="experience-container">
           <h3 id="experience-header">Experience</h3>
-          <p id="company">{this.props.company}</p>
-          <p id="position">{this.props.position}</p>
-          <p id="start">{this.props.start}</p>
-          <p id="end">{this.props.end}</p>
-          <p id="exprience-description">{this.props.experienceDescription}</p>
+          {experiences.map((el) => {
+            return (
+              <div key={el.id} id={'experience'}>
+                <p id="company" name={'company'}>
+                  {el.company}
+                </p>
+                <p id="position" name={'position'}>
+                  {el.position}
+                </p>
+                <p id="start" name={'start'}>
+                  {el.start}
+                </p>
+                <p id="end" name={'end'}>
+                  {el.end}
+                </p>
+                <p id="description" name={'description'}>
+                  {el.description}
+                </p>
+              </div>
+            );
+          })}
         </div>
         <div className="education-container">
           <h3 id="education-header">Education</h3>
-          <p id="course">{this.props.course}</p>
-          <p id="university">{this.props.university}</p>
-          <p id="eduStart">{this.props.eduStart}</p>
-          <p id="eduEnd">{this.props.eduEnd}</p>
-          <p id="eduDescription">{this.props.eduDescription}</p>
+          {education.map((el) => {
+            return (
+              <div key={el.id} id={'education'}>
+                <p id="course" name={'course'}>
+                  {el.course}
+                </p>
+                <p id="university" name={'university'}>
+                  {el.university}
+                </p>
+                <p id="start" name={'start'}>
+                  {el.start}
+                </p>
+                <p id="end" name={'end'}>
+                  {el.end}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
     );
