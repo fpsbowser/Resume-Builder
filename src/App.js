@@ -3,6 +3,7 @@ import CV from './components/CV';
 import Education from './components/Education';
 import Experience from './components/Experience';
 import Information from './components/Information';
+import uniqid from 'uniqid';
 
 class App extends Component {
   constructor() {
@@ -19,6 +20,7 @@ class App extends Component {
       },
       experience: [
         {
+          id: `${uniqid()}`,
           company: 'A software Company',
           position: 'Software Engineer',
           start: '2021',
@@ -27,6 +29,7 @@ class App extends Component {
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate nam rem eos placeat doloribus deleniti sit!',
         },
         {
+          id: `${uniqid()}`,
           company: 'My First Company',
           position: 'Graduate Engineer',
           start: '2018',
@@ -35,6 +38,7 @@ class App extends Component {
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate nam rem eos placeat doloribus deleniti sit!',
         },
         {
+          id: `${uniqid()}`,
           company: 'University',
           position: 'Tutor',
           start: '2016',
@@ -45,6 +49,7 @@ class App extends Component {
       ],
       education: [
         {
+          id: `${uniqid()}`,
           course: 'Fullstack JavaScript',
           university: 'The Odin Project',
           start: '2020',
@@ -52,6 +57,7 @@ class App extends Component {
           description: '',
         },
         {
+          id: `${uniqid()}`,
           course: 'CS50: Introduction to Computer Science',
           university: 'Harvard University',
           start: '2019',
@@ -60,11 +66,41 @@ class App extends Component {
         },
       ],
     };
-    this.informationHandlechange = this.informationHandlechange.bind(this);
-    this.experienceHandlechange = this.experienceHandlechange.bind(this);
-    this.educationHandlechange = this.educationHandlechange.bind(this);
+    this.handlechange = this.handlechange.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
     this.addInputs = this.addInputs.bind(this);
+  }
+
+  handlechange(e, type, index) {
+    if (type === 'information') {
+      const value = e.target.value;
+      this.setState((prevState) => ({
+        information: {
+          ...prevState.information,
+          [e.target.name]: value,
+        },
+      }));
+    } else if (type === 'experience') {
+      const value = e.target.value;
+      console.log(index);
+      this.setState((prevState) => ({
+        experience: prevState.experience.map((obj) =>
+          obj.company === index
+            ? Object.assign(obj, { [e.target.name]: value })
+            : obj
+        ),
+      }));
+    } else if (type === 'education') {
+      const value = e.target.value;
+      console.log(index);
+      this.setState((prevState) => ({
+        education: prevState.education.map((obj) =>
+          obj.course === index
+            ? Object.assign(obj, { [e.target.name]: value })
+            : obj
+        ),
+      }));
+    }
   }
 
   handleDeleteClick(div, type) {
@@ -86,6 +122,7 @@ class App extends Component {
         experience: [
           ...prevState.experience,
           {
+            id: `${uniqid()}`,
             company: '',
             position: '',
             start: '',
@@ -99,6 +136,7 @@ class App extends Component {
         education: [
           ...prevState.education,
           {
+            id: `${uniqid()}`,
             course: '',
             university: '',
             start: '',
@@ -107,29 +145,6 @@ class App extends Component {
         ],
       }));
     }
-  }
-
-  informationHandlechange(e) {
-    const value = e.target.value;
-    this.setState((prevState) => ({
-      information: {
-        ...prevState.information,
-        [e.target.name]: value,
-      },
-    }));
-    // console.table(this.state);
-    console.log(e);
-  }
-
-  experienceHandlechange(e) {
-    const value = e.target.value;
-    this.setState((prevState) => ({
-      experience: {
-        ...prevState.experience,
-        [e.target.name]: value,
-      },
-    }));
-    console.table(this.state);
   }
 
   educationHandlechange(e) {
@@ -156,19 +171,19 @@ class App extends Component {
               email={this.state.information.email}
               location={this.state.information.location}
               description={this.state.information.description}
-              handlechange={this.informationHandlechange}
+              handlechange={this.handlechange}
             />
             <h2>Work Experience</h2>
             <Experience
               experiences={this.state.experience}
-              handlechange={this.experienceHandlechange}
+              handlechange={this.handlechange}
               handledelete={this.handleDeleteClick}
               add={this.addInputs}
             />
             <h2>Education</h2>
             <Education
               educations={this.state.education}
-              handlechange={this.educationHandlechange}
+              handlechange={this.handlechange}
               handledelete={this.handleDeleteClick}
               add={this.addInputs}
             />
