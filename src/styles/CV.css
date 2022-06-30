@@ -1,6 +1,7 @@
 .rendered-resume {
   border: 1px solid black;
   padding: 50px;
+  background-color: aliceblue;
   /* width: 595px;
   height: 842px; */
 }

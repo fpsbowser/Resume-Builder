@@ -9,12 +9,15 @@
   grid-template-columns: 1fr 1fr;
   font-family: 'Roboto', sans-serif;
   justify-items: center;
+  background-color: rgb(199, 199, 199);
 }
 
 .builder-container {
   display: grid;
   width: 595px;
-  border: 2px solid rgb(104, 158, 194);
+  border: 3px solid rgb(104, 158, 194);
+  border-radius: 8px;
+  background-color: rgb(212, 224, 231);
   margin-top: 1rem;
 }
 
