@@ -57,7 +57,7 @@ class Education extends Component {
                   this.removeEducation(el);
                 }}
               >
-                Delete
+                Remove
               </button>
             </div>
           );

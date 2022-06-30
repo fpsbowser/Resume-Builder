@@ -67,7 +67,7 @@ class Experience extends Component {
                   this.removeExperience(el);
                 }}
               >
-                Delete
+                Remove
               </button>
             </div>
           );
