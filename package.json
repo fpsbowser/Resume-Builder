@@ -1,7 +1,7 @@
 {
   "name": "cv-project",
   "version": "0.1.0",
-  "homepage": "http://fpsbowser.github.io/resume-builder",
+  "homepage": "http://fpsbowser.github.io/Resume-Builder",
   "private": true,
   "dependencies": {
     "prettier": "^2.7.1",
