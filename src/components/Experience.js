@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles/Experience.css';
 
 class Experience extends Component {
   removeExperience(experience) {
@@ -15,17 +16,10 @@ class Experience extends Component {
 
   render() {
     return (
-      <div>
-        <button
-          onClick={() => {
-            this.addExperience();
-          }}
-        >
-          Add
-        </button>
+      <div className="experiences-container">
         {this.props.experiences.map((el) => {
           return (
-            <div key={el.id}>
+            <div key={el.id} className={'experience-inputs'}>
               <input
                 value={el.company}
                 name={'company'}
@@ -59,6 +53,7 @@ class Experience extends Component {
                 }}
               />
               <input
+                id="description-input"
                 value={el.description}
                 name={'description'}
                 placeholder={'Description'}
@@ -67,6 +62,7 @@ class Experience extends Component {
                 }}
               />
               <button
+                id="delete-btn"
                 onClick={() => {
                   this.removeExperience(el);
                 }}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles/Education.css';
 
 class Education extends Component {
   removeEducation(education) {
@@ -15,17 +16,10 @@ class Education extends Component {
 
   render() {
     return (
-      <div>
-        <button
-          onClick={() => {
-            this.addEducation();
-          }}
-        >
-          Add
-        </button>
+      <div className="educations-container">
         {this.props.educations.map((el) => {
           return (
-            <div key={el.id}>
+            <div key={el.id} className={'education-inputs'}>
               <input
                 value={el.course}
                 name={'course'}

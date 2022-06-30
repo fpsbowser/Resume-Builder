@@ -4,6 +4,7 @@ import Education from './components/Education';
 import Experience from './components/Experience';
 import Information from './components/Information';
 import uniqid from 'uniqid';
+import './styles/App.css';
 
 class App extends Component {
   constructor() {
@@ -16,7 +17,7 @@ class App extends Component {
         email: 'bobbybill@gmail.gov',
         location: 'Varrock, Gielinor',
         description:
-          'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio, beatae hic! Ad eveniet ea earum placeat quos, officiis dolorem soluta excepturi debitis velit itaque harum ullam obcaecati non quod error nemo. Totam exercitationemut officiis sed!',
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum exercitationem facere nesciunt consectetur provident porro explicabo. Quidem inventore cum ab modi quo aperiam, animi exercitationem veritatis dolorem non veniam quia! Eius facilis ipsum placeat laboriosam, alias pariatur ipsa molestias esse eos consectetur, eaque delectus dignissimos doloremque provident sint! Illo vel dolores obcaecati nesciunt aspernatur aliquam iste pariatur. Totam, dolorum corrupti.',
       },
       experience: [
         {
@@ -35,7 +36,7 @@ class App extends Component {
           start: '2018',
           end: '2020',
           description:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate nam rem eos placeat doloribus deleniti sit!',
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum exercitationem facere nesciunt consectetur provident porro explicabo. Voluptate nam rem eos placeat doloribus deleniti sit!',
         },
         {
           id: `${uniqid()}`,
@@ -44,7 +45,7 @@ class App extends Component {
           start: '2016',
           end: '2018',
           description:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate nam rem eos placeat doloribus deleniti sit!',
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate nam rem eos placeat doloribus deleniti sit! Totam, dolorum corrupti.',
         },
       ],
       education: [
@@ -58,7 +59,7 @@ class App extends Component {
         },
         {
           id: `${uniqid()}`,
-          course: 'CS50: Introduction to Computer Science',
+          course: 'CS50: Intro to Computer Science',
           university: 'Harvard University',
           start: '2019',
           end: '2020',
@@ -163,30 +164,52 @@ class App extends Component {
       <div>
         <div className="main-container">
           <div className="builder-container">
-            <h2>Personal Details</h2>
-            <Information
-              name={this.state.information.name}
-              title={this.state.information.title}
-              phone={this.state.information.phone}
-              email={this.state.information.email}
-              location={this.state.information.location}
-              description={this.state.information.description}
-              handlechange={this.handlechange}
-            />
-            <h2>Work Experience</h2>
-            <Experience
-              experiences={this.state.experience}
-              handlechange={this.handlechange}
-              handledelete={this.handleDeleteClick}
-              add={this.addInputs}
-            />
-            <h2>Education</h2>
-            <Education
-              educations={this.state.education}
-              handlechange={this.handlechange}
-              handledelete={this.handleDeleteClick}
-              add={this.addInputs}
-            />
+            <div className="information-container">
+              <h2 id="information-header">Personal Details</h2>
+              <Information
+                name={this.state.information.name}
+                title={this.state.information.title}
+                phone={this.state.information.phone}
+                email={this.state.information.email}
+                location={this.state.information.location}
+                description={this.state.information.description}
+                handlechange={this.handlechange}
+              />
+            </div>
+            <div className="experience-container">
+              <h2 id="experience-header">Work Experience</h2>
+              <button
+                id="add-btn"
+                onClick={() => {
+                  this.addInputs('experience');
+                }}
+              >
+                Add
+              </button>
+              <Experience
+                experiences={this.state.experience}
+                handlechange={this.handlechange}
+                handledelete={this.handleDeleteClick}
+                add={this.addInputs}
+              />
+            </div>
+            <div className="education-container">
+              <h2 id="education-header">Education</h2>
+              <button
+                id="add-btn"
+                onClick={() => {
+                  this.addInputs('education');
+                }}
+              >
+                Add
+              </button>
+              <Education
+                educations={this.state.education}
+                handlechange={this.handlechange}
+                handledelete={this.handleDeleteClick}
+                add={this.addInputs}
+              />
+            </div>
           </div>
           <div className="rendered-container">
             <CV props={this.state} />

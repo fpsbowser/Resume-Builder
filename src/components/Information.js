@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles/Information.css';
 
 class Information extends Component {
   handlechange(e) {
@@ -8,8 +9,8 @@ class Information extends Component {
   render() {
     const { name, title, phone, email, location, description } = this.props;
     return (
-      <div>
-        <form>
+      <div className="informations-container">
+        <div className="information-inputs">
           <input
             name="name"
             type="text"
@@ -56,6 +57,7 @@ class Information extends Component {
             }}
           />
           <input
+            id="user-test-d"
             name="description"
             type="text"
             placeholder="Description"
@@ -64,7 +66,7 @@ class Information extends Component {
               this.handlechange(e);
             }}
           />
-        </form>
+        </div>
       </div>
     );
   }
