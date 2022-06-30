@@ -1,0 +1,110 @@
+.rendered-resume {
+  border: 1px solid black;
+  padding: 50px;
+  /* width: 595px;
+  height: 842px; */
+}
+
+.rendered-header-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#name {
+  font-weight: 700;
+  font-size: 3rem;
+  color: rgb(104, 158, 194);
+  font-family: 'Cinzel', serif;
+}
+
+#title {
+  font-weight: 300;
+  font-size: 1.4em;
+}
+
+#user-description {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 300;
+  font-size: 0.8em;
+  grid-column: span 2;
+  padding: 0.5rem 0 0rem 0;
+  border-top: 1px solid black;
+}
+
+.contact-information {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 300;
+  font-size: 0.8em;
+  justify-self: end;
+  align-self: center;
+}
+
+.rendered-experience-container,
+.rendered-education-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding-top: 1rem;
+}
+
+#rendered-experience-header {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 1.3em;
+  padding-bottom: 0.5rem;
+  grid-column: span 3;
+  color: rgb(104, 158, 194);
+}
+
+#rendered-education-header {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 1.3em;
+  /* padding-bottom: 0.5rem; */
+  grid-column: span 3;
+  color: rgb(104, 158, 194);
+  margin-top: -1rem;
+}
+
+#experience,
+#education {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column: span 2;
+}
+
+#education {
+  padding-top: 0.5rem;
+}
+
+.experience-info,
+.education-info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 300;
+  font-size: 0.7em;
+  /* grid-template-columns: 3fr 1fr 1fr; */
+}
+
+#position,
+#course {
+  align-self: center;
+  font-weight: 400;
+  font-size: 1em;
+}
+
+#exp-start,
+#exp-end,
+#edu-start,
+#edu-end {
+  font-weight: 500;
+}
+
+#description-box {
+  grid-column: span 3;
+  padding-bottom: 1rem;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 300;
+  font-size: 0.8em;
+}

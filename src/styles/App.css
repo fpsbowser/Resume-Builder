@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Playfair+Display+SC:wght@400;700;900&family=Roboto:wght@100;300;400;500;700;900&family=Ubuntu:wght@300;400;500;700&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-family: 'Roboto', sans-serif;
+  justify-items: center;
+}
+
+.builder-container {
+  display: grid;
+  width: 595px;
+  border: 2px solid rgb(104, 158, 194);
+  margin-top: 1rem;
+}
+
+.information-container,
+.experience-container,
+.education-container {
+  padding-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+#experience-header,
+#information-header,
+#education-header {
+  padding-left: 1rem;
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+#add-btn {
+  width: 5rem;
+  align-self: center;
+  justify-self: end;
+  margin-right: 1rem;
+}
+
+.rendered-container {
+  display: grid;
+  justify-items: center;
+  padding: 1rem;
+  width: 595px;
+  height: 842px;
+}
+
+input {
+  width: 90%;
+  height: 2rem;
+  border: solid black 2px;
+  border-radius: 6px;
+  padding-left: 0.5rem;
+}

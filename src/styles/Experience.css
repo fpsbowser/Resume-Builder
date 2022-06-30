@@ -1,0 +1,15 @@
+.experience-inputs {
+  display: grid;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  justify-items: center;
+}
+
+.experiences-container {
+  grid-column: span 2;
+}
+
+#description-input {
+  line-height: 2em;
+}

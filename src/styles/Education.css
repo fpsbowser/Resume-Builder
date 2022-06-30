@@ -1,0 +1,11 @@
+.education-inputs {
+  display: grid;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  justify-items: center;
+}
+
+.educations-container {
+  grid-column: span 2;
+}
