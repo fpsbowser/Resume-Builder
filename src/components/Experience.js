@@ -6,27 +6,27 @@ const Experience = (props) => {
     props.handledelete(experience, 'experience');
   }
 
-  function handlechange(e, index) {
-    props.handlechange(e, 'experience', index);
+  function handlechange(e, oldValue) {
+    props.handlechange(e, oldValue);
   }
 
   return (
-    <div className="experiences-container">
+    <div className='experiences-container'>
       {props.experiences.map((el) => {
         return (
           <div key={el.id} className={'experience-inputs'}>
             <input
-              value={el.company}
-              name={'company'}
-              placeholder={'Company'}
+              value={el.position}
+              name={'position'}
+              placeholder={'Position'}
               onChange={(e) => {
                 handlechange(e, el.company);
               }}
             />
             <input
-              value={el.position}
-              name={'position'}
-              placeholder={'Position'}
+              value={el.company}
+              name={'company'}
+              placeholder={'Company'}
               onChange={(e) => {
                 handlechange(e, el.company);
               }}
@@ -48,7 +48,7 @@ const Experience = (props) => {
               }}
             />
             <input
-              id="description-input"
+              id='description-input'
               value={el.description}
               name={'description'}
               placeholder={'Description'}
@@ -57,7 +57,7 @@ const Experience = (props) => {
               }}
             />
             <button
-              id="delete-btn"
+              id='delete-btn'
               onClick={() => {
                 removeExperience(el);
               }}

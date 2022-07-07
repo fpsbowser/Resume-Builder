@@ -6,12 +6,12 @@ const Education = (props) => {
     props.handledelete(education, 'education');
   }
 
-  function handlechange(e, index) {
-    props.handlechange(e, 'education', index);
+  function handlechange(e, oldValue) {
+    props.handlechange(e, oldValue);
   }
 
   return (
-    <div className="educations-container">
+    <div className='educations-container'>
       {props.educations.map((el) => {
         return (
           <div key={el.id} className={'education-inputs'}>
