@@ -9,7 +9,3 @@
 .informations-container {
   grid-column: span 2;
 }
-
-#user-test-d {
-  line-height: 2em;
-}
